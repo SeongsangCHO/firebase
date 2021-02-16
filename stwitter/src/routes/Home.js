@@ -1,15 +1,15 @@
-import { dbService } from 'fbase';
-import { React, useState, useEffect } from 'react';
-import Sweet from 'components/Sweet';
+import { dbService } from "fbase";
+import { React, useState, useEffect } from "react";
+import Sweet from "components/Sweet";
 
-const Home = ({userObj}) => {
+const Home = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
   const [sweets, setSweets] = useState([]);
 
   useEffect(() => {
-    dbService.collection("sweets").onSnapshot(snapshot => {
-      const sweetArray = snapshot.docs.map(doc => ({
-        id : doc.id,
+    dbService.collection("sweets").onSnapshot((snapshot) => {
+      const sweetArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
         ...doc.data(),
       }));
       setSweets(sweetArray);
@@ -24,25 +24,43 @@ const Home = ({userObj}) => {
       creatorId: userObj.uid,
     });
     setSweet("");
-    console.log(sweet)
-  }
+    console.log(sweet);
+  };
   const onChange = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     setSweet(value);
+  };
+  
+  const onFileChagne = (e) => {
+    //e.target.files
+    const files = e.target.files;
+    const theFile = files[0];
   }
+
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input value={sweet} type="text" placeholder="What's on your mind?" maxLength={120} onChange={onChange}></input>
-        <input type="submit" value ="Switter"></input>
+        <input
+          value={sweet}
+          type="text"
+          placeholder="What's on your mind?"
+          maxLength={120}
+          onChange={onChange}
+        ></input>
+        <input type="file" accept="image/*" onChange={onFileChagne}></input>
+        <input type="submit" value="Switter"></input>
       </form>
       <div>
-        {sweets.map(sweet => (
-          <Sweet key={sweet.id} sweetObj={sweet} isOwner={sweet.creatorId === userObj.uid}/>
+        {sweets.map((sweet) => (
+          <Sweet
+            key={sweet.id}
+            sweetObj={sweet}
+            isOwner={sweet.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Home;
