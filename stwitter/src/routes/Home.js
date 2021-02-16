@@ -35,6 +35,11 @@ const Home = ({ userObj }) => {
     //e.target.files
     const files = e.target.files;
     const theFile = files[0];
+    const reader = new FileReader();// file API
+    reader.onloadend = (finishedEvent) => {
+      console.log(finishedEvent);
+    }; // when file onloaded. parameter has URL of the image
+    reader.readAsDataURL(theFile);
   }
 
   return (
