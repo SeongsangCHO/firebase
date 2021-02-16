@@ -1,23 +1,26 @@
 import { dbService } from 'fbase';
 import { React, useState, useEffect } from 'react';
 
-const Home = () => {
+const Home = ({userObj}) => {
   const [sweet, setSweet] = useState("");
   const [sweets, setSweets] = useState([]);
-  const getSweets = async () => {
-    const dbSweets = await dbService.collection("sweets").get();
-    dbSweets.forEach(document => console.log(document.data()));
-    console.log(dbSweets);
-  }
+
   useEffect(() => {
-    getSweets();
+    dbService.collection("sweets").onSnapshot(snapshot => {
+      const sweetArray = snapshot.docs.map(doc => ({
+        id : doc.id,
+        ...doc.data(),
+      }));
+      setSweets(sweetArray);
+    });
   }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     await dbService.collection("sweets").add({
-      sweet,
+      text: sweet,
       createdAt: Date.now(),
+      creatorId: userObj.uid,
     });
     setSweet("");
     console.log(sweet)
@@ -32,6 +35,13 @@ const Home = () => {
         <input value={sweet} type="text" placeholder="What's on your mind?" maxLength={120} onChange={onChange}></input>
         <input type="submit" value ="Switter"></input>
       </form>
+      <div>
+        {sweets.map(sweet => (
+          <div key={sweet.id}>
+            <h4>{sweet.text}</h4>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
