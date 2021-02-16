@@ -1,8 +1,18 @@
 import { dbService } from 'fbase';
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 
 const Home = () => {
   const [sweet, setSweet] = useState("");
+  const [sweets, setSweets] = useState([]);
+  const getSweets = async () => {
+    const dbSweets = await dbService.collection("sweets").get();
+    dbSweets.forEach(document => console.log(document.data()));
+    console.log(dbSweets);
+  }
+  useEffect(() => {
+    getSweets();
+  }, []);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await dbService.collection("sweets").add({
