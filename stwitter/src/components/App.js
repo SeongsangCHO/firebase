@@ -7,6 +7,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [init, setInit] = useState(false);
   useEffect(() => {
+    console.log('use Effect');
     //유저 상태를 추적하는 이벤트리스너를 마운트될 때 등록. 변경되면 콜백 수행
     authService.onAuthStateChanged((user) => {
       if (user){
