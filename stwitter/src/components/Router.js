@@ -6,12 +6,12 @@ import Profile from "../routes/Profile";
 import Navigation from "components/Navigation";
 import { Redirect } from "react-router-dom";
 
-const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
+const AppRouter = ({ userObj, refreshUser }) => {
   return (
     <Router>
-      {isLoggedIn && <Navigation userObj={userObj} />}
+      {userObj && <Navigation userObj={userObj} />}
       <Switch>
-        {isLoggedIn ? (
+        {userObj ? (
           <>
             <Route exact path="/">
               <Home userObj={userObj} />
@@ -19,14 +19,10 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
             <Route exact path="/profile">
               <Profile refreshUser={refreshUser} userObj={userObj} />
             </Route>
-            <Redirect from="*" to="/" />
           </>
         ) : (
           <>
-            <Route exact path="/profile">
-              <Auth />
-            </Route>
-            <Redirect from="*" to="/" />
+            <Auth />
           </>
         )}
       </Switch>

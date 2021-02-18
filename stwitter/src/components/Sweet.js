@@ -12,7 +12,9 @@ const Sweet = ({ sweetObj, isOwner }) => {
       //delete sweet, photo
       //path of this data
       await dbService.doc(`sweets/${sweetObj.id}`).delete();
-      await storageService.refFromURL(sweetObj.attachmentUrl).delete();
+      // console.log(storageService.refFromURL(sweetObj.attachmentUrl));
+      if(sweetObj.attachmentUrl !== "")
+        await storageService.refFromURL(sweetObj.attachmentUrl).delete();
     }
   };
   const onSubmit = async (e) => {
@@ -21,9 +23,9 @@ const Sweet = ({ sweetObj, isOwner }) => {
       text: newSweet,
     });
     setEditing(false);
-  }
+  };
   const onChange = (e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     setNewSweet(value);
   };
 
@@ -31,16 +33,24 @@ const Sweet = ({ sweetObj, isOwner }) => {
     <div>
       {editing ? (
         <>
-        <form onSubmit={onSubmit}>
-          <input type="text" placeholder="Edit your sweet" value={newSweet} required onChange={onChange}></input>
-          <input type="submit" value="Update sweet"/>
-          <button onClick={toggleEditing}>Cancel</button>
-        </form>
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              placeholder="Edit your sweet"
+              value={newSweet}
+              required
+              onChange={onChange}
+            ></input>
+            <input type="submit" value="Update sweet" />
+            <button onClick={toggleEditing}>Cancel</button>
+          </form>
         </>
       ) : (
         <>
           <h4>{sweetObj.text}</h4>
-          {sweetObj.attachmentUrl && <img src={sweetObj.attachmentUrl} width="50px" height="50px"/>}
+          {sweetObj.attachmentUrl && (
+            <img src={sweetObj.attachmentUrl} width="50px" height="50px" />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete sweet</button>
