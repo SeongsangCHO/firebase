@@ -2,6 +2,8 @@ import AppRouter from "components/Router";
 import { React, useState, useEffect } from "react";
 import { authService } from "fbase";
 import getRandomFruitsName from 'random-fruits-name';
+import './App.module.css';
+
 
 function App() {
   const [userObj, setUserObj] = useState(null);
