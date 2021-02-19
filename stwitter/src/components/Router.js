@@ -6,6 +6,7 @@ import Profile from "../routes/Profile";
 import Navigation from "components/Navigation";
 import { Redirect } from "react-router-dom";
 
+
 const AppRouter = ({ userObj, refreshUser }) => {
   return (
     <Router>

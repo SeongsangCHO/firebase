@@ -1,7 +1,9 @@
 import AuthForm from "components/AuthForm";
 import { authService, firebaseInstance } from "fbase";
 import { React, useState } from "react";
-// import './Auth.scss'
+import styles from "./Auth.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Auth = () => {
   const onSocialClick = async (e) => {
@@ -13,21 +15,24 @@ const Auth = () => {
     }
     try {
       await authService.signInWithPopup(provider);
-    }catch(error){
+    } catch (error) {
       console.log(error.message);
     }
   };
   return (
-    <div>
-      <AuthForm />
+    <div className={styles.container}>
+      <FontAwesomeIcon icon={faTwitter} />
+      <div className={styles.authContainer}>
+        <AuthForm />
 
-      <div>
-        <button name="google" onClick={onSocialClick}>
-          Continue with Google
-        </button>
-        <button name="github" onClick={onSocialClick}>
-          Continue with Github
-        </button>
+        <div className={styles.authBtnContainer}>
+          <button name="google" onClick={onSocialClick}>
+            Continue with Google
+          </button>
+          <button name="github" onClick={onSocialClick}>
+            Continue with Github
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import { authService } from "fbase";
 import { React, useState } from "react";
+import './AuthForm.module.css';
+
 
 const AuthForm = () => {
   const [newAccount, setNewAccount] = useState(true);
@@ -55,13 +57,10 @@ const AuthForm = () => {
         ></input>
         <input
           type="submit"
-          value={newAccount ? "Create Account" : "Login"}
+          value={"Create Account"}
         ></input>
         {error}
       </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Sign in" : "Create Account"}
-      </span>
     </>
   );
 };
