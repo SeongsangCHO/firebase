@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 ul {
-  max-width: 768px;
   min-width: 512px;
   display: flex;
+  padding: 0;
   justify-content: space-around;
   list-style: none;
 }
@@ -21,8 +22,8 @@ ul li {
 
 a {
   color: #00acee;
-  text-decoration: none;
   font-size: 1.5rem;
+  text-decoration: none;
 } /* Globally */
 
 /* Each state */
@@ -39,4 +40,17 @@ a:hover,
 a:active {
   text-decoration: none;
   color: #000000b3;
+}
+
+@media screen and (max-width: 512px) {
+  ul {
+    min-width: 100vw;
+    display: flex;
+  }
+  ul li {
+    flex: 1;
+  }
+  a {
+    font-size: 1rem;
+  }
 }
