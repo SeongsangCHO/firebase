@@ -28,22 +28,28 @@ const Auth = () => {
         <AuthForm />
 
         <div className={styles.authBtnContainer}>
-          <button name="google" onClick={onSocialClick}>
+          
+          <div className={styles.loginGoogle}>
             <FontAwesomeIcon
               name="google"
               className={styles.googleIcon}
               icon={faGoogle}
             />
-            Continue with Google
-          </button>
-          <button name="github" onClick={onSocialClick}>
+            <button name="google" onClick={onSocialClick}>
+              Continue with Google
+            </button>
+          </div>
+
+          <div className={styles.loginGithub}>
             <FontAwesomeIcon
               name="github"
               className={styles.githubIcon}
               icon={faGithub}
             />
-            Continue with Github
-          </button>
+            <button name="github" onClick={onSocialClick}>
+              Continue with Github
+            </button>
+          </div>
         </div>
       </div>
     </div>
