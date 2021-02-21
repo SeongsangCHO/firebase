@@ -1,2 +1,36 @@
 .sweetForm{
+  width:100%;
+  background-color:#E6F1F7;
+}
+
+
+.sweetInput{
+  box-sizing: border-box;
+  display: block;
+  min-width: 100%;
+  height:50px;
+  margin-bottom: 7px;
+}
+
+input[type="file"]{
+  display:none;
+}
+
+
+.TweetLabelStyle{
+  display:inline-block;
+  color: #3899C4;
+  cursor: pointer;
+}
+
+.TweetBtnStyle{
+  cursor: pointer;
+  background-color:#00acee;
+  color: white;
+  height: 30px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  float:right;
 }

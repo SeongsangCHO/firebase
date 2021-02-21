@@ -3,6 +3,8 @@ import { React, useState, useEffect } from "react";
 import Sweet from "components/Sweet";
 import SweetFactory from "components/SweetFactory";
 import styles from './Home.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Home = ({ userObj }) => {
   const [sweets, setSweets] = useState([]);
@@ -18,6 +20,7 @@ const Home = ({ userObj }) => {
 
   return (
     <div className={styles.sweetContainer}>
+      <FontAwesomeIcon className={styles.twitterIcon} icon={faTwitter} />
       <SweetFactory userObj={userObj} />
       <div className={styles.sweetContent}>
         {sweets.map((sweet) => (

@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
-import styles from './SweetFactory.module.css';
+import styles from "./SweetFactory.module.css";
+
+
 const SweetFactory = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
   const [attachment, setAttachment] = useState("");
@@ -51,11 +53,17 @@ const SweetFactory = ({ userObj }) => {
         value={sweet}
         type="text"
         placeholder="What's on your mind?"
-        maxLength={120}
+        className={styles.sweetInput}
         onChange={onChange}
       ></input>
-      <input type="submit" value="Switter"></input>
-      <input type="file" accept="image/*" onChange={onFileChagne}></input>
+      <label htmlFor="file-upload" className={styles.TweetLabelStyle} >Picture
+        <input id="file-upload" type="file" accept="image/*" onChange={onFileChagne}></input>
+      </label>
+      <input
+        className={styles.TweetBtnStyle}
+        type="submit"
+        value="Sweet"
+      ></input>
       {attachment && (
         <div>
           <img src={attachment} width="50px" height="50px" />

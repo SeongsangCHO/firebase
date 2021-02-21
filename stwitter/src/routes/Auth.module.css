@@ -10,7 +10,10 @@ div.container {
 
 .twitterIcon {
   font-size: 50px;
+  margin-bottom: 20px;
+  color:#00acee;
 }
+
 div.authContainer {
 }
 
