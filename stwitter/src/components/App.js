@@ -6,6 +6,8 @@ import "./App.module.css";
 function App() {
   const [userObj, setUserObj] = useState(null);
   const [init, setInit] = useState(false);
+  const abortController = new AbortController();
+
   useEffect(() => {
     //유저 상태를 추적하는 이벤트리스너를 마운트될 때 등록. 변경되면 콜백 수행
     authService.onAuthStateChanged((user) => {
@@ -20,6 +22,8 @@ function App() {
         setUserObj(null); // log out
       }
       setInit(true);
+      console.log('useEffect');
+      return user;
     });
   }, []);
   const refreshUser = () => {

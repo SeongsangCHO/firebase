@@ -2,20 +2,25 @@ import { dbService, storageService } from "fbase";
 import { React, useState, useEffect } from "react";
 import Sweet from "components/Sweet";
 import SweetFactory from "components/SweetFactory";
-import styles from './Home.module.css';
+import styles from "./Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Home = ({ userObj }) => {
   const [sweets, setSweets] = useState([]);
+  const abortController = new AbortController();
+
   useEffect(() => {
-    dbService.collection("sweets").onSnapshot((snapshot) => {
-      let sweetArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })).sort((a, b) => b.createdAt - a.createdAt);
+    const getData = dbService.collection("sweets").onSnapshot((snapshot) => {
+      let sweetArray = snapshot.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        .sort((a, b) => b.createdAt - a.createdAt);
       setSweets(sweetArray);
     });
+    return getData; //async 구독 문제 해결
   }, []);
 
   return (

@@ -29,6 +29,7 @@ const SweetFactory = ({ userObj }) => {
     await dbService.collection("sweets").add(sweetObject);
     setSweet("");
     setAttachment("");
+    setLettersCount(0);
     document.getElementById("file-upload").value = "";
   };
 
