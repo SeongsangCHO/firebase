@@ -8,7 +8,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 const Auth = () => {
   const onSocialClick = async (e) => {
     let provider;
-    if (e.target.name == "google") {
+    if (e.target.name === "google") {
       provider = new firebaseInstance.auth.GoogleAuthProvider();
     } else if (e.target.name === "github") {
       provider = new firebaseInstance.auth.GithubAuthProvider();

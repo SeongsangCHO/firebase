@@ -88,7 +88,7 @@ const Sweet = ({ sweetObj, isOwner }) => {
               {sweetObj.text}
             </span>
             {sweetObj.attachmentUrl && (
-              <img src={sweetObj.attachmentUrl} width="50px" height="50px" />
+              <img alt="sweetImage" src={sweetObj.attachmentUrl} width="50px" height="50px" />
             )}
             {isOwner && (
               <>

@@ -1,6 +1,7 @@
 import { authService, dbService } from "fbase";
 import { React, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import styles from "./Profile.module.css";
 
 const Profile = ({ userObj, refreshUser }) => {
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
@@ -18,7 +19,7 @@ const Profile = ({ userObj, refreshUser }) => {
       .get();
   };
   useEffect(() => {
-    getMySweets();
+    document.querySelector('#editInput').focus();
   }, []);
 
   const onSubmit = async (e) => {
@@ -35,18 +36,21 @@ const Profile = ({ userObj, refreshUser }) => {
     setNewDisplayName(value);
   };
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <div className={styles.profileEditContainer}>
+      <span>Hello,{userObj.displayName}!</span>
+      <form onSubmit={onSubmit}
+      className={styles.profileEditForm}>
         <input
+          id="editInput"
           onChange={onChange}
           type="text"
           placeholder="Display Name"
           value={newDisplayName}
         />
-        <input type="submit" value="Update Profile" />
+        <input className={styles.TweetBtnStyle} type="submit" value="Update Profile" />
+        <button className={styles.logOutBtn} onClick={onLogOutClick}>Log out</button>
       </form>
-      <button onClick={onLogOutClick}>Log out</button>
-    </>
+    </div>
   );
 };
 
