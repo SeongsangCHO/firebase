@@ -7,8 +7,8 @@ const Navigation = ( {userObj} ) => {
   return (
     <nav className={styles.navBar}>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/profile">{userObj.displayName}'s Profile</Link></li>
+        <li><Link to="/" className={styles.link}>Home</Link></li>
+        <li><Link to="/profile"className={styles.link}>{userObj.displayName}'s Profile</Link></li>
       </ul>
     </nav>
   );
