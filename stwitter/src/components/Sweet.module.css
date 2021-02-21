@@ -16,6 +16,7 @@
 .writedSweet span{
   transition: .4s opacity;
   opacity: 1;
+  max-height: 100px;
 }
 
 .writedSweet span.hide{

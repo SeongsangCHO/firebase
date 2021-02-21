@@ -9,6 +9,8 @@ import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 const SweetFactory = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
   const [attachment, setAttachment] = useState("");
+  const [lettersCount, setLettersCount] = useState(0);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     let attachmentUrl = "";
@@ -32,6 +34,7 @@ const SweetFactory = ({ userObj }) => {
 
   const onChange = (e) => {
     const { value } = e.target;
+    setLettersCount(value.length);
     setSweet(value);
   };
 
@@ -58,6 +61,7 @@ const SweetFactory = ({ userObj }) => {
       <input
         value={sweet}
         type="text"
+        maxLength={120}
         placeholder="What's on your mind?"
         className={styles.sweetInput}
         onChange={onChange}
@@ -73,11 +77,15 @@ const SweetFactory = ({ userObj }) => {
             onChange={onFileChagne}
           ></input>
         </label>
-        <input
-          className={styles.TweetBtnStyle}
-          type="submit"
-          value="Sweet"
-        ></input>
+
+        <div className={styles.rightSide}>
+          <span>{lettersCount}/120</span>
+          <input
+            className={styles.TweetBtnStyle}
+            type="submit"
+            value="Sweet"
+          ></input>
+        </div>
       </div>
       {attachment && (
         <div className={styles.imagePreviewContainer}>

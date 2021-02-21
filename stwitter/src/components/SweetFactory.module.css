@@ -31,6 +31,16 @@ input[type="file"] {
   font-size: 18px;
   margin-bottom: 7px;
 }
+
+.sweetWriterWrapper .rightSide {
+  float: right;
+}
+
+.rightSide span{
+  opacity: .3;
+  margin-right: 5px;
+}
+
 .TweetBtnStyle {
   cursor: pointer;
   background-color: #00acee;
@@ -40,7 +50,6 @@ input[type="file"] {
   border-radius: 7px;
   font-weight: bold;
   border: none;
-  float: right;
   margin-right: 7px;
 }
 
@@ -55,7 +64,7 @@ input[type="file"] {
   cursor: pointer;
   margin: 0;
   left: -25px;
-  top:0;
+  top: 0;
   font-size: 1em;
-  color:red;
+  color: red;
 }
