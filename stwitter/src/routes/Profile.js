@@ -14,7 +14,7 @@ const Profile = ({ userObj, refreshUser }) => {
     const sweets = await dbService
       .collection("sweets")
       .where("creatorId", "==", userObj.uid)
-      .orderBy("createdAt", "desc") //정렬, => 인덱스생성
+      .orderBy("createdAt", "asc") //정렬, => 인덱스생성
       .get();
   };
   useEffect(() => {

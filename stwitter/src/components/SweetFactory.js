@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
-
+import styles from './SweetFactory.module.css';
 const SweetFactory = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
   const [attachment, setAttachment] = useState("");
@@ -35,7 +35,6 @@ const SweetFactory = ({ userObj }) => {
     const theFile = files[0];
     const reader = new FileReader(); // file API
     reader.onloadend = (finishedEvent) => {
-      console.log(finishedEvent);
       const {
         currentTarget: { result },
       } = finishedEvent; //  result === finishedEvent.currentTarget.result
@@ -47,7 +46,7 @@ const SweetFactory = ({ userObj }) => {
 
   const onClearAttachment = () => setAttachment(null);
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={styles.sweetForm}>
       <input
         value={sweet}
         type="text"
@@ -55,8 +54,8 @@ const SweetFactory = ({ userObj }) => {
         maxLength={120}
         onChange={onChange}
       ></input>
-      <input type="file" accept="image/*" onChange={onFileChagne}></input>
       <input type="submit" value="Switter"></input>
+      <input type="file" accept="image/*" onChange={onFileChagne}></input>
       {attachment && (
         <div>
           <img src={attachment} width="50px" height="50px" />
