@@ -2,7 +2,9 @@ import { React, useState } from "react";
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./SweetFactory.module.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { faFeather } from "@fortawesome/free-solid-svg-icons";
 
 const SweetFactory = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
@@ -40,13 +42,16 @@ const SweetFactory = ({ userObj }) => {
       const {
         currentTarget: { result },
       } = finishedEvent; //  result === finishedEvent.currentTarget.result
-
       setAttachment(result);
+      console.log(theFile);
     }; // when file onloaded. parameter has URL of the image
     reader.readAsDataURL(theFile);
   };
 
-  const onClearAttachment = () => setAttachment(null);
+  const onClearAttachment = () => {
+    setAttachment("");
+    document.getElementById("file-upload").value = null;
+  }
   return (
     <form onSubmit={onSubmit} className={styles.sweetForm}>
       <input
@@ -56,18 +61,29 @@ const SweetFactory = ({ userObj }) => {
         className={styles.sweetInput}
         onChange={onChange}
       ></input>
-      <label htmlFor="file-upload" className={styles.TweetLabelStyle} >Picture
-        <input id="file-upload" type="file" accept="image/*" onChange={onFileChagne}></input>
-      </label>
-      <input
-        className={styles.TweetBtnStyle}
-        type="submit"
-        value="Sweet"
-      ></input>
+      <div className={styles.sweetWriterWrapper}>
+        <label htmlFor="file-upload" className={styles.TweetLabelStyle}>
+          <FontAwesomeIcon className={styles.uploadIcon} icon={faImage} />
+          Picture
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            onChange={onFileChagne}
+          ></input>
+        </label>
+        <input
+          className={styles.TweetBtnStyle}
+          type="submit"
+          value="Sweet"
+        ></input>
+      </div>
       {attachment && (
-        <div>
-          <img src={attachment} width="50px" height="50px" />
-          <button onClick={onClearAttachment}>Cancel Upload</button>
+        <div className={styles.imagePreviewContainer}>
+          <button id="uploadCancelBtn" className={styles.TweetBtnStyle} onClick={onClearAttachment}>
+            X
+          </button>
+          <img src={attachment} width="125px" height="125px" />
         </div>
       )}
     </form>
