@@ -2,7 +2,6 @@
   display:flex;
   justify-content:center;
   align-items:center;
-  width:100%;
   flex-direction: column;
 }
 
@@ -21,4 +20,9 @@
   border: none;
   background-color: #00acee;
   color: #fff;
+}
+
+@media screen and (max-width: 512px){
+  .authForm{
+  }
 }
