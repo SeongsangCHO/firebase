@@ -22,11 +22,12 @@ const SweetFactory = ({ userObj }) => {
       createdAt: Date.now(),
       creatorId: userObj.uid,
       attachmentUrl,
-      displayName: userObj.displayName
+      displayName: userObj.displayName,
     };
     await dbService.collection("sweets").add(sweetObject);
     setSweet("");
     setAttachment("");
+    document.getElementById("file-upload").value = "";
   };
 
   const onChange = (e) => {
@@ -50,7 +51,7 @@ const SweetFactory = ({ userObj }) => {
 
   const onClearAttachment = () => {
     setAttachment("");
-    document.getElementById("file-upload").value = null;
+    document.getElementById("file-upload").value = "";
   };
   return (
     <form onSubmit={onSubmit} className={styles.sweetForm}>
