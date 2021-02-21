@@ -3,8 +3,9 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:aqua;
+  background-color:#4fb9e3;
   position: absolute;
   width:100%;
+  min-height: 50px;
   bottom: 0;
 }
