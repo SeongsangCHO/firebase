@@ -41,6 +41,7 @@ input[type="file"] {
   font-weight: bold;
   border: none;
   float: right;
+  margin-right: 7px;
 }
 
 .imagePreviewContainer {

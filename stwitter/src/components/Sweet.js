@@ -1,9 +1,17 @@
 import { dbService, storageService } from "fbase";
 import { React, useState } from "react";
+import styles from "./Sweet.module.css";
+import classNames from 'classnames/bind';
+
+let cx = classNames.bind(styles);
 
 const Sweet = ({ sweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newSweet, setNewSweet] = useState(sweetObj.text);
+  const [writedDate, setWritedDate] = useState(
+    new Date(sweetObj.createdAt).toLocaleString()
+  );
+  const [toggleSweetManage, setToggleSweetManage] = useState(false);
 
   const toggleEditing = () => setEditing((prev) => !prev);
   const onDeleteClick = async () => {
@@ -13,7 +21,7 @@ const Sweet = ({ sweetObj, isOwner }) => {
       //path of this data
       await dbService.doc(`sweets/${sweetObj.id}`).delete();
       // console.log(storageService.refFromURL(sweetObj.attachmentUrl));
-      if(sweetObj.attachmentUrl !== "")
+      if (sweetObj.attachmentUrl !== "")
         await storageService.refFromURL(sweetObj.attachmentUrl).delete();
     }
   };
@@ -27,6 +35,10 @@ const Sweet = ({ sweetObj, isOwner }) => {
   const onChange = (e) => {
     const { value } = e.target;
     setNewSweet(value);
+  };
+
+  const onOpenManageBox = (e) => {
+    setToggleSweetManage((prev) => !prev);
   };
 
   return (
@@ -46,18 +58,32 @@ const Sweet = ({ sweetObj, isOwner }) => {
           </form>
         </>
       ) : (
-        <>
-          <h4>{sweetObj.text}</h4>
-          {sweetObj.attachmentUrl && (
-            <img src={sweetObj.attachmentUrl} width="50px" height="50px" />
-          )}
-          {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete sweet</button>
-              <button onClick={toggleEditing}>Edit sweet</button>
-            </>
-          )}
-        </>
+        <div className={styles.writedSweetContainer}>
+          <div className={classNames({[styles.writedSweet] : true})}>
+            <span className={classNames({[styles.writer] : true,[styles.hide] : toggleSweetManage})}>{sweetObj.displayName}</span>
+            <span className={classNames({[styles.date] : true,[styles.hide] : toggleSweetManage})}>{writedDate}</span>
+            <span className={classNames({[styles.sweet] : true,[styles.hide] : toggleSweetManage})}>{sweetObj.text}</span>
+            {sweetObj.attachmentUrl && (
+              <img src={sweetObj.attachmentUrl} width="50px" height="50px" />
+            )}
+            {isOwner && (
+              <>
+                <div className={styles.ownerBtnContainer}>
+                  <button
+                    className={styles.ownerSweetManageBtn}
+                    onClick={onOpenManageBox}
+                  >
+                    My Sweet
+                  </button>
+                </div>
+                <div className={classNames({[styles.ownerBtnBox] : true, [styles.hide] : !toggleSweetManage})}>
+                    <button className={(toggleSweetManage) ? styles.showBtn : styles.hide } onClick={onDeleteClick}>Delete sweet</button>
+                    <button className={(toggleSweetManage) ? styles.showBtn : styles.hide } onClick={toggleEditing}>Edit sweet</button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
