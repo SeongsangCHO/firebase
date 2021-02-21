@@ -33,3 +33,10 @@
     overflow: hidden;
   }
 }
+@media screen and (min-width:768px){
+  .sweetContainer{
+    min-width: 768px;
+    min-height: 768px;
+
+  }
+}

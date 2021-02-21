@@ -21,6 +21,13 @@ input[type="file"] {
   cursor: pointer;
   line-height: 30px;
   font-size: 0.9em;
+  transition: .3s;
+}
+
+.TweetLabelStyle:hover{
+  font-size: 1em;
+  color: #000000;
+
 }
 
 .uploadIcon {
@@ -51,6 +58,12 @@ input[type="file"] {
   font-weight: bold;
   border: none;
   margin-right: 7px;
+  transition: .3s;
+}
+
+.TweetBtnStyle:hover{
+  background-color: #000000;
+  font-size: 1.1em;
 }
 
 .imagePreviewContainer {
