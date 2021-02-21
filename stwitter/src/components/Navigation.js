@@ -1,11 +1,11 @@
 import { React } from 'react';
 import {Link} from 'react-router-dom';
-import './Navigation.module.css';
+import styles from './Navigation.module.css';
 
 
 const Navigation = ( {userObj} ) => {
   return (
-    <nav>
+    <nav className={styles.navBar}>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/profile">{userObj.displayName}'s Profile</Link></li>

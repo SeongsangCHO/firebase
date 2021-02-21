@@ -16,7 +16,7 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div class="">
+    <div>
       <SweetFactory userObj={userObj} />
       <div>
         {sweets.map((sweet) => (
