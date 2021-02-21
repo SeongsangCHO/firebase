@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./SweetFactory.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { faFeather } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const SweetFactory = ({ userObj }) => {
   const [sweet, setSweet] = useState("");
@@ -43,7 +43,6 @@ const SweetFactory = ({ userObj }) => {
         currentTarget: { result },
       } = finishedEvent; //  result === finishedEvent.currentTarget.result
       setAttachment(result);
-      console.log(theFile);
     }; // when file onloaded. parameter has URL of the image
     reader.readAsDataURL(theFile);
   };
@@ -51,7 +50,7 @@ const SweetFactory = ({ userObj }) => {
   const onClearAttachment = () => {
     setAttachment("");
     document.getElementById("file-upload").value = null;
-  }
+  };
   return (
     <form onSubmit={onSubmit} className={styles.sweetForm}>
       <input
@@ -80,9 +79,13 @@ const SweetFactory = ({ userObj }) => {
       </div>
       {attachment && (
         <div className={styles.imagePreviewContainer}>
-          <button id="uploadCancelBtn" className={styles.TweetBtnStyle} onClick={onClearAttachment}>
-            X
-          </button>
+          <FontAwesomeIcon
+            id="uploadCancelBtn"
+            className={styles.cancelBtn}
+            onClick={onClearAttachment}
+            icon={faTimesCircle}
+          />
+
           <img src={attachment} width="125px" height="125px" />
         </div>
       )}

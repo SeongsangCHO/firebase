@@ -45,12 +45,16 @@ input[type="file"] {
 
 .imagePreviewContainer {
   position: relative;
-  margin-left: 7px;
-
+  margin-left: 30px;
+  font-size: 18px;
 }
 
-.imagePreviewContainer .TweetBtnStyle {
-  position:absolute;
+.imagePreviewContainer .cancelBtn {
+  position: absolute;
+  cursor: pointer;
   margin: 0;
-  float:none;
+  left: -25px;
+  top:0;
+  font-size: 1em;
+  color:red;
 }
