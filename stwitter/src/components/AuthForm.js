@@ -1,6 +1,6 @@
 import { authService } from "fbase";
 import { React, useState } from "react";
-import './AuthForm.module.css';
+import styles from './AuthForm.module.css';
 
 
 const AuthForm = () => {
@@ -38,7 +38,7 @@ const AuthForm = () => {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className={styles.authForm}>
         <input
           onChange={onChange}
           name="email"

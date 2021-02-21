@@ -6,6 +6,12 @@ div.container {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  flex-direction: column;
+  max-height: 512px;
+  /* 
+  min-width: 512px;
+   */
+  overflow: auto;
 }
 
 .twitterIcon {
@@ -18,5 +24,29 @@ div.authContainer {
 }
 
 div.authBtnContainer {
+  display: flex;
+  justify-content:space-around;
+  margin-top: 10px;
   background-color: aqua;
+}
+
+.authBtnContainer .button{
+}
+
+.authBtnContainer .googleIcon{
+  font-size:2em;
+  margin-right: 7px;
+}
+
+@media screen and (max-width:512px){
+  .container, .authContainer{
+    min-width: 100vw;
+  }
+}
+@media screen and (min-width:768px){
+  .container{
+    min-width: 768px;
+    min-height: 768px;
+
+  }
 }

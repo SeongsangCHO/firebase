@@ -4,6 +4,8 @@ import { React, useState } from "react";
 import styles from "./Auth.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Auth = () => {
   const onSocialClick = async (e) => {
@@ -27,9 +29,19 @@ const Auth = () => {
 
         <div className={styles.authBtnContainer}>
           <button name="google" onClick={onSocialClick}>
+            <FontAwesomeIcon
+              name="google"
+              className={styles.googleIcon}
+              icon={faGoogle}
+            />
             Continue with Google
           </button>
           <button name="github" onClick={onSocialClick}>
+            <FontAwesomeIcon
+              name="github"
+              className={styles.githubIcon}
+              icon={faGithub}
+            />
             Continue with Github
           </button>
         </div>
