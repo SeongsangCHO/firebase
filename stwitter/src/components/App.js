@@ -15,7 +15,8 @@ function App() {
         setUserObj({
           displayName: user.displayName || user.email,
           uid: user.uid,
-          updateProfile: (args) => user.updateProfile(args), //진짜 func을 사용하기 위한 중간 func
+          updateProfile: (args) => user.updateProfile(args),
+          photoURL: user.photoURL //진짜 func을 사용하기 위한 중간 func
         }); // 크기가 너무 커지면 느려질 수도 있음. 쓰는 것만 사용하자, {}로 아예 새로운 객체를 생성해 re-render할 수 있도록함.
       } else {
         // setIsLoggedIn(false);
@@ -31,6 +32,7 @@ function App() {
       displayName: user.displayName,
       uid: user.uid,
       updateProfile: (args) => user.updateProfile(args),
+      photoURL: user.photoURL
     });
   };
   return (

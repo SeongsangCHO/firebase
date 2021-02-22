@@ -44,6 +44,7 @@ const Profile = ({ userObj, refreshUser }) => {
           id="editInput"
           onChange={onChange}
           type="text"
+          maxLength={12}
           placeholder="Display Name"
           value={newDisplayName}
         />

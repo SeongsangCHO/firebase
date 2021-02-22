@@ -25,6 +25,7 @@ const SweetFactory = ({ userObj }) => {
       creatorId: userObj.uid,
       attachmentUrl,
       displayName: userObj.displayName,
+      photoURL: userObj.photoURL
     };
     await dbService.collection("sweets").add(sweetObject);
     setSweet("");
@@ -58,7 +59,7 @@ const SweetFactory = ({ userObj }) => {
     document.getElementById("file-upload").value = "";
   };
   return (
-    <form onSubmit={onSubmit} className={styles.sweetForm} accept-charset="utf-8">
+    <form onSubmit={onSubmit} className={styles.sweetForm}>
       <input
         value={sweet}
         type="text"
