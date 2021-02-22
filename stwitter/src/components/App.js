@@ -22,7 +22,6 @@ function App() {
         setUserObj(null); // log out
       }
       setInit(true);
-      console.log('useEffect');
       return user;
     });
   }, []);
