@@ -52,19 +52,20 @@ const Sweet = ({ sweetObj, isOwner }) => {
   return (
     <div className={styles.sweet}>
       {editing ? (
-        <>
+        <div className={styles.writedSweet}>
           <form onSubmit={onSubmit}>
-            <input
+            <textarea
               type="text"
+              maxLength={120}
               placeholder="Edit your sweet"
               value={newSweet}
               required
               onChange={onChange}
-            ></input>
-            <input type="submit" value="Update sweet" />
+            ></textarea>
             <button onClick={toggleEditing}>Cancel</button>
+            <button type="submit">Update</button>
           </form>
-        </>
+        </div>
       ) : (
         <div className={styles.writedSweetContainer}>
           <div className={classNames({ [styles.writedSweet]: true })}>
@@ -87,21 +88,22 @@ const Sweet = ({ sweetObj, isOwner }) => {
               </span>
             </div>
 
-
-            <div className={styles.imageWrapper} onClick={onClickImage}>
-            <span
+            <div
               className={classNames({
-                [styles.sweet]: true,
+                [styles.imageWrapper]: true,
                 [styles.hide]: toggleSweetManage,
               })}
+              onClick={onClickImage}
             >
-              {sweetObj.text}
-            </span>
+              <span
+                className={classNames({
+                  [styles.sweet]: true,
+                })}
+              >
+                {sweetObj.text}
+              </span>
               {sweetObj.attachmentUrl && (
-                <img
-                  alt="sweetImage"
-                  src={sweetObj.attachmentUrl}
-                />
+                <img alt="sweetImage" src={sweetObj.attachmentUrl} />
               )}
             </div>
 

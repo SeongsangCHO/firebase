@@ -4,6 +4,29 @@ button {
   border: none;
   border-radius: 5px;
 }
+.writedSweet form{
+}
+.writedSweet textarea {
+  width:100%;
+  display:block;
+  max-width:100%;
+  line-height:1.5;
+  border-radius:3px;
+  border:1px solid #F7E98D;
+  font:13px Tahoma, cursive;
+  transition:box-shadow 0.5s ease;
+  box-sizing: border-box;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  background:linear-gradient(#F9EFAF, #F7E98D);
+  background:-o-linear-gradient(#F9EFAF, #F7E98D);
+  background:-ms-linear-gradient(#F9EFAF, #F7E98D);
+  background:-moz-linear-gradient(#F9EFAF, #F7E98D);
+  background:-webkit-linear-gradient(#F9EFAF, #F7E98D);
+}
+
+.writedSweet > form > button{
+  float:right;
+}
 
 .writedSweetContainer {
   position: relative;
@@ -19,37 +42,41 @@ button {
   border-top: 1px solid grey;
   padding: 22px;
   box-sizing: border-box;
+  
 }
 
-.writedSweet .sweetTop{
-
+.writedSweet .sweetTop {
 }
 
-.imageWrapper{
+.imageWrapper {
   margin: 10px 0 10px 0;
+  transition: 0.4s;
 }
 
-.imageWrapper img:hover{
-  opacity: .5;
+.imageWrapper.hide {
+  opacity: 0.3;
+}
+
+.imageWrapper img:hover {
+  opacity: 0.5;
 }
 
 .imageWrapper img {
   position: absolute;
-  left: 100%;  
+  left: 100%;
   cursor: pointer;
-  transition: .4s;
+  transition: 0.4s;
   position: relative;
-  transform: translate(-100%,0);
+  transform: translate(-100%, 0);
   width: 100px;
   height: 100px;
+  opacity: 1;
 }
-
-
-
 
 .writedSweet span {
   transition: 0.4s opacity;
   opacity: 1;
+  text-overflow: ellipsis;
 }
 
 .manageBtn:active,
@@ -57,8 +84,7 @@ button {
 .manageBtn:focus {
   background-color: #000000;
   margin-right: 22px;
-  min-width:100px;
-
+  min-width: 100px;
 }
 
 .manageBtn {
@@ -75,20 +101,20 @@ button {
   font-size: 1rem;
 }
 
-.ownerBtnBox button:first-child {
+.ownerBtnBox button:first-child, .writedSweet form button[type="submit"] {
   background-color: tomato;
   color: white;
   margin-right: 5px;
 }
-.ownerBtnBox button:first-child:hover {
+.ownerBtnBox button:first-child:hover, .writedSweet form button[type="submit"]:hover{
   background-color: red;
 }
 /* sweet update btn  style*/
-.ownerBtnBox button:last-child {
+.ownerBtnBox button:last-child, .writedSweet  form > button:nth-child(2){
   background-color: #006bc9;
   color: white;
 }
-.ownerBtnBox button:last-child:hover {
+.ownerBtnBox button:last-child:hover, .writedSweet  form > button:nth-child(2):hover {
   background-color: blue;
 }
 .writedSweet span.hide {
@@ -146,16 +172,14 @@ button {
   opacity: 1;
 }
 
-
-
-@media screen and (max-width:768px){
-  .imageWrapper  span.sweet{
+@media screen and (max-width: 768px) {
+  .imageWrapper span.sweet {
     max-width: 300px;
   }
 }
 
-@media screen and (max-width:512px){
-  .imageWrapper  span.sweet{
+@media screen and (max-width: 512px) {
+  .imageWrapper span.sweet {
     max-width: 220px;
   }
 }
