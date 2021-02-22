@@ -1,9 +1,9 @@
-@font-face {
+/* @font-face {
   font-family: 'BMHANNAAir';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
+} */
 html, body{
   margin:0;
   padding:0;
@@ -13,7 +13,7 @@ html, body{
 body{
 }
 * {
-  font-family: 'BMHANNAAir';
+  /* font-family: 'BMHANNAAir'; */
 }
 #root {
   width: 100%;
