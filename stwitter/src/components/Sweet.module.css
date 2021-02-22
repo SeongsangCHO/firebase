@@ -1,3 +1,10 @@
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
 .writedSweetContainer {
   position: relative;
   box-sizing: border-box;
@@ -8,17 +15,55 @@
   min-height: 100px;
   font-size: 16px;
   border-top: 1px solid grey;
-  margin: 7px 0 7px 0;
+
   padding: 7px;
   box-sizing: border-box;
 
 }
+
 .writedSweet span{
   transition: .4s opacity;
   opacity: 1;
   max-height: 100px;
 }
 
+
+.manageBtn:active,
+.manageBtn:hover,
+.manageBtn:focus{
+  background-color: #000000;
+}
+
+.manageBtn{
+  color: white;
+  background-color: #00acee;
+  transition: .4s;
+  margin-bottom: 7px;
+  font-size: 1rem;
+}
+
+/* sweet delete btn style */
+
+.ownerBtnBox button {
+  font-size: 1rem;
+}
+.ownerBtnBox button:first-child{
+  background-color:tomato;
+  color: white;
+  margin-right: 5px;
+}
+.ownerBtnBox button:first-child:hover{
+  background-color:red;
+
+}
+/* sweet update btn  style*/
+.ownerBtnBox button:last-child {
+  background-color: #006bc9;
+  color: white;
+}
+.ownerBtnBox button:last-child:hover{
+  background-color:blue;
+}
 .writedSweet span.hide{
   opacity: 0.3;
 }

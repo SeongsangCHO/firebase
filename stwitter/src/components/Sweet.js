@@ -88,16 +88,27 @@ const Sweet = ({ sweetObj, isOwner }) => {
               {sweetObj.text}
             </span>
             {sweetObj.attachmentUrl && (
-              <img alt="sweetImage" src={sweetObj.attachmentUrl} width="50px" height="50px" />
+              <img
+                alt="sweetImage"
+                src={sweetObj.attachmentUrl}
+                width="50px"
+                height="50px"
+              />
             )}
             {isOwner && (
               <>
                 <div className={styles.ownerBtnContainer}>
                   <button
-                    className={styles.ownerSweetManageBtn}
+                    className={classNames(
+                      {
+                        [styles.ownerSweetManageBtn]: !toggleSweetManage,
+                        [styles.manageBtn]: true,
+                      },
+                      { active: toggleSweetManage }
+                    )}
                     onClick={onOpenManageBox}
                   >
-                    My Sweet
+                    {!toggleSweetManage ? "Manage" : "Close"}
                   </button>
                 </div>
                 <div
@@ -113,6 +124,7 @@ const Sweet = ({ sweetObj, isOwner }) => {
                     Delete sweet
                   </button>
                   <button
+                    id="sweetUpdateBtn"
                     className={toggleSweetManage ? styles.showBtn : styles.hide}
                     onClick={toggleEditing}
                   >
