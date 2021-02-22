@@ -16,14 +16,13 @@
 
 }
 
+
+
 .sweetContent{
   width: 100%;
   overflow: auto;
 }
 
-.sweetContent div:nth-child(2n){
-  background:#edf1f2;
-}
 
 .twitterIcon{
   font-size: 50px;
