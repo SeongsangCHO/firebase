@@ -58,13 +58,14 @@ const SweetFactory = ({ userObj }) => {
     document.getElementById("file-upload").value = "";
   };
   return (
-    <form onSubmit={onSubmit} className={styles.sweetForm}>
+    <form onSubmit={onSubmit} className={styles.sweetForm} accept-charset="utf-8">
       <input
         value={sweet}
         type="text"
         maxLength={120}
         placeholder="What's on your mind?"
         className={styles.sweetInput}
+        required
         onChange={onChange}
       ></input>
       <div className={styles.sweetWriterWrapper}>

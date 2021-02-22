@@ -38,7 +38,7 @@ const AuthForm = () => {
   };
   return (
     <>
-      <form onSubmit={onSubmit} className={styles.authForm}>
+      <form onSubmit={onSubmit} className={styles.authForm} accept-charset="euc-kr">
         <input
           onChange={onChange}
           name="email"
@@ -51,7 +51,7 @@ const AuthForm = () => {
           onChange={onChange}
           name="password"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           required
           value={password}
         ></input>
