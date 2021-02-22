@@ -9,8 +9,6 @@ ReactDOM.render(
     <App />
     <MetaTags>
       <title>Switter</title>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-      <meta charset="UTF-8" />
     </MetaTags>
   </React.StrictMode>,
   document.getElementById("root")

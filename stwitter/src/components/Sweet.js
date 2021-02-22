@@ -70,6 +70,17 @@ const Sweet = ({ sweetObj, isOwner }) => {
         <div className={styles.writedSweetContainer}>
           <div className={classNames({ [styles.writedSweet]: true })}>
             <div className={styles.sweetTop}>
+              {sweetObj.photoURL && (
+                <div className={styles.userPhotoWrapper}>
+                  <img
+                    className={styles.userPhoto}
+                    src={sweetObj.photoURL}
+                    width="50px"
+                    height="50px"
+                  ></img>
+                </div>
+              )}
+
               <span
                 className={classNames({
                   [styles.writer]: true,
@@ -87,7 +98,6 @@ const Sweet = ({ sweetObj, isOwner }) => {
                 {writedDate}
               </span>
             </div>
-
             <div
               className={classNames({
                 [styles.imageWrapper]: true,
