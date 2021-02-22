@@ -113,6 +113,8 @@ button {
 
 .ownerBtnBox button.hide{
   opacity: 0;
+  cursor:default;
+
 }
 .ownerBtnBox button.showBtn{
   opacity: 1;

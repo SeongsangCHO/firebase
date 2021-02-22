@@ -118,14 +118,21 @@ const Sweet = ({ sweetObj, isOwner }) => {
                   })}
                 >
                   <button
-                    className={toggleSweetManage ? styles.showBtn : styles.hide}
+                    className={classNames({
+                      [styles.showBtn]: toggleSweetManage,
+                      [styles.hide]: !toggleSweetManage,
+                    })}
+                    disabled={!toggleSweetManage}
                     onClick={onDeleteClick}
                   >
                     Delete sweet
                   </button>
                   <button
-                    id="sweetUpdateBtn"
-                    className={toggleSweetManage ? styles.showBtn : styles.hide}
+                    className={classNames({
+                      [styles.showBtn]: toggleSweetManage,
+                      [styles.hide]: !toggleSweetManage,
+                    })}
+                    disabled={!toggleSweetManage}
                     onClick={toggleEditing}
                   >
                     Edit sweet
