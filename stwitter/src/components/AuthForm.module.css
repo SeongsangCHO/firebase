@@ -10,15 +10,17 @@
   margin-top: 7px;
   font-size: 1.5rem;
   padding:.3rem;
+  font-weight:500;
   width:100%;
 }
 
 .authForm input[type="submit"]{
   font-size: 1rem;
-  flex:1;
+  height: 30px;
   border-radius: 5px;
   border: none;
   background-color: #00acee;
+  cursor: pointer;
   color: #fff;
 }
 
