@@ -14,26 +14,51 @@ button {
 }
 .writedSweet {
   width: 100%;
-  min-height: 150px;
+  min-height: 175px;
   font-size: 16px;
   border-top: 1px solid grey;
-  padding: 7px;
+  padding: 22px;
   box-sizing: border-box;
 }
-.writedSweet img {
-  position: relative;
+
+.writedSweet .sweetTop{
+
 }
+
+.imageWrapper{
+  margin: 10px 0 10px 0;
+}
+
+.imageWrapper img:hover{
+  opacity: .5;
+}
+
+.imageWrapper img {
+  position: absolute;
+  left: 100%;  
+  cursor: pointer;
+  transition: .4s;
+  position: relative;
+  transform: translate(-100%,0);
+  width: 100px;
+  height: 100px;
+}
+
+
+
 
 .writedSweet span {
   transition: 0.4s opacity;
   opacity: 1;
-  max-height: 100px;
 }
 
 .manageBtn:active,
 .manageBtn:hover,
 .manageBtn:focus {
   background-color: #000000;
+  margin-right: 22px;
+  min-width:100px;
+
 }
 
 .manageBtn {
@@ -49,6 +74,7 @@ button {
 .ownerBtnBox button {
   font-size: 1rem;
 }
+
 .ownerBtnBox button:first-child {
   background-color: tomato;
   color: white;
@@ -79,9 +105,10 @@ button {
   /* line-height: .7em; */
 }
 .writedSweet .sweet {
-  display: block;
+  display: inline-block;
+  position: absolute;
   box-sizing: border-box;
-  margin: 10px 0 10px 0;
+  max-width: 600px;
   font-size: 1em;
 }
 
@@ -96,7 +123,7 @@ button {
 
 .ownerBtnContainer .ownerSweetManageBtn {
   width: 100px;
-  margin-right: 7px;
+  margin-right: 22px;
 }
 
 .ownerBtnBox {
@@ -117,4 +144,18 @@ button {
 }
 .ownerBtnBox button.showBtn {
   opacity: 1;
+}
+
+
+
+@media screen and (max-width:768px){
+  .imageWrapper  span.sweet{
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width:512px){
+  .imageWrapper  span.sweet{
+    max-width: 220px;
+  }
 }

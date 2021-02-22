@@ -12,6 +12,7 @@ const Sweet = ({ sweetObj, isOwner }) => {
     new Date(sweetObj.createdAt).toLocaleString()
   );
   const [toggleSweetManage, setToggleSweetManage] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleEditing = () => {
     setEditing((prev) => !prev);
@@ -44,6 +45,10 @@ const Sweet = ({ sweetObj, isOwner }) => {
     setToggleSweetManage((prev) => !prev);
   };
 
+  const onClickImage = (e) => {
+    console.log("click");
+  };
+
   return (
     <div className={styles.sweet}>
       {editing ? (
@@ -63,22 +68,27 @@ const Sweet = ({ sweetObj, isOwner }) => {
       ) : (
         <div className={styles.writedSweetContainer}>
           <div className={classNames({ [styles.writedSweet]: true })}>
-            <span
-              className={classNames({
-                [styles.writer]: true,
-                [styles.hide]: toggleSweetManage,
-              })}
-            >
-              {sweetObj.displayName}
-            </span>
-            <span
-              className={classNames({
-                [styles.date]: true,
-                [styles.hide]: toggleSweetManage,
-              })}
-            >
-              {writedDate}
-            </span>
+            <div className={styles.sweetTop}>
+              <span
+                className={classNames({
+                  [styles.writer]: true,
+                  [styles.hide]: toggleSweetManage,
+                })}
+              >
+                {sweetObj.displayName}
+              </span>
+              <span
+                className={classNames({
+                  [styles.date]: true,
+                  [styles.hide]: toggleSweetManage,
+                })}
+              >
+                {writedDate}
+              </span>
+            </div>
+
+
+            <div className={styles.imageWrapper} onClick={onClickImage}>
             <span
               className={classNames({
                 [styles.sweet]: true,
@@ -87,14 +97,14 @@ const Sweet = ({ sweetObj, isOwner }) => {
             >
               {sweetObj.text}
             </span>
-            {sweetObj.attachmentUrl && (
+              {sweetObj.attachmentUrl && (
                 <img
                   alt="sweetImage"
                   src={sweetObj.attachmentUrl}
-                  width="50px"
-                  height="50px"
                 />
-            )}
+              )}
+            </div>
+
             {isOwner && (
               <>
                 <div

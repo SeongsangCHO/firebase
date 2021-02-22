@@ -29,13 +29,14 @@
   margin-bottom: 20px;
   color:#00acee;
 }
-
+/* 0 ~ 512px */
 @media screen and (max-width:512px){
   .sweetContainer{
     min-width: 100vw;
     overflow: hidden;
   }
 }
+/* 768 ~ px */
 @media screen and (min-width:768px){
   .sweetContainer{
     min-width: 768px;
