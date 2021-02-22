@@ -22,7 +22,7 @@ ul li {
 
 a {
   color: #00acee;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-decoration: none;
 } /* Globally */
 
@@ -51,6 +51,6 @@ a:active {
     flex: 1;
   }
   a {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }
